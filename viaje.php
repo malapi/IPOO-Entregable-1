@@ -101,6 +101,26 @@ class viaje{
         return $cadena;
     }
 
+    public function ingresaModificaPasajero($objInfoPasajero) {
+        $dni = $objInfoPasajero->getDocumento();
+        $nombrePasajero = $objInfoPasajero->getNombre();
+        $apellidoPasajero = $objInfoPasajero->getApellido();
+        $telefonoPasajero = $objInfoPasajero->getTelefono();
+        $pasajeros = $this->getPasajeros();
+        if($this->pasajeroYaCargado($dni)){
+            $indiceModifica = $this->buscarPasajero($dni);
+            $elPasajero = $pasajeros[$indiceModifica];
+            $pasajeros[$indiceModifica] = $elPasajero;
+            $this->setPasajeros($pasajeros);
+        } else {
+            $objPasajero = new pasajero($nombrePasajero,$apellidoPasajero,$dni,$telefonoPasajero);
+            $pasajeros[]= $objPasajero;
+            $this->setPasajeros($pasajeros);
+        }
+
+
+
+    }
     // Metodo que cuenta la cantidad de pasajeros
     public function cantPasajeros(){
         $cantPasajeros = count($this->getPasajeros());
