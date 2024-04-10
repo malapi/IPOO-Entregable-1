@@ -3,21 +3,6 @@
     include_once 'viaje.php';
     include_once 'responsableV.php';
 
-    // Muestra el menu donde se interactua con el usuario
-    function menuPrincipal(){
-        echo " ____________________________________________________________________________\n";
-        echo "|                                Menu Principal:                             |\n";
-        echo "|                       1) Cargar informacion del viaje                      |\n";
-        echo "|                     2) Modificar informacion del viaje                     |\n";
-        echo "|                         3) Ver informacion del viaje                       |\n";
-        echo "|                                 4) Salir                                   |\n";
-        echo "|____________________________________________________________________________|\n";
-        $opc = trim(fgets(STDIN));
-        echo "\n";
-
-        return $opc;
-    }
-
     // Menu que se muestra cuando el usuario elige la opcion 2 de la funcion menuPrincipal
     function menu_Modificacion_viaje(){
         echo " ____________________________________________________________________________\n";
@@ -61,11 +46,6 @@
 
         return $opc3;
     }
-    
-    // Funcion que carga los datos del viaje
-   
-    // Funcion que carga los datos de los pasajeros
-    
 
     function solicitarDatosPasajero(){
         $ingreso = "s";
@@ -109,8 +89,6 @@
         }
 
     }
-
-   
     function modificarInfoUnPasajero($elViaje){
         $pasajeros = $elViaje->getPasajeros();
         echo "En el viaje hay ".count($elViaje->getPasajeros())." pasajeros\n";
@@ -160,7 +138,11 @@
                 break;
             }
         }else{
-        echo "No existe un pasajero con ese nro de documento!! \n";
+            echo "No existe un pasajero con ese nro de documento!!. Lo damos de Alta ? si/no \n";
+            $respuesta = trim(fgets(STDIN));
+            if($respuesta == "Si" || $respuesta == "si"){
+                $unPasajero = solicitarDatosPasajero();
+            }
         }   
         return $unPasajero;   
     }
@@ -210,21 +192,21 @@
     $responsable = new responsableV("456","123","MaLa","Nota");
     $objViaje = new viaje("8","San Martin",10,$responsable);
 
-    //Modificar Datos del viaje
-    $opcion2 = menu_Modificacion_viaje();
-    modificarViaje($objViaje,$opcion2);
+    /////////////MODIFICAR DATOS DEL PASAJERO
+    //$opcion2 = menu_Modificacion_viaje();
+    //modificarViaje($objViaje,$opcion2);
 
-    //Modificar Infor del REsponsable
+    /////////////MODIFICAR INFO DEL RESPONSABLE
     //modificarInfoResponsable($objViaje);
     
-    //Cargar Pasajero
-    /*$posiblePasajero = solicitarDatosPasajero();
-    $objViaje->ingresaModificaPasajero($posiblePasajero); */
+    ///////////CARGAR PASAJERO
+    /*$posiblePasajero = modificarInfoUnPasajero($objViaje);
+    $objViaje->ingresaModificaPasajero($posiblePasajero); 
     echo "-------------------------------------------\n";
     echo $objViaje;
     echo "-------------------------------------------\n";
-    
-    //Modificar Pasajer
+    */
+    /////////////MODIFICAR PASAJERO
     /*$posiblePasajero = modificarInfoUnPasajero($objViaje);
     if($posiblePasajero != null) {
         $objViaje->ingresaModificaPasajero($posiblePasajero);

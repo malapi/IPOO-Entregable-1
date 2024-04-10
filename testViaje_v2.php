@@ -253,9 +253,9 @@
                 break;
             }
         }else{
-            echo "No existe un pasajero con ese nro de documento!!. Lo damos de Alta ? Si/No \n";
+            echo "No existe un pasajero con ese nro de documento!!. Lo damos de Alta ? si/no \n";
             $respuesta = trim(fgets(STDIN));
-            if($respuesta == "Si"){
+            if($respuesta == "Si" || $respuesta == "si"){
                 $unPasajero = solicitarDatosPasajero();
             }
         }   
