@@ -397,22 +397,3 @@
         }
     }while($opcion != 4);
     
-
-    /*$responsable = new responsableV("456","123","MaLa","Pino");
-    $objViaje = new viaje("8","San Martin",10,$responsable);
-    //cargarInfoViaje($objViaje);
-    $posiblePasajero = solicitarDatosPasajero();
-    $objViaje->ingresaModificaPasajero($posiblePasajero);
-    echo "-------------------------------------------\n";
-    echo $objViaje;
-    echo "-------------------------------------------\n";
-    $posiblePasajero = modificarInfoUnPasajero($objViaje);
-    if($posiblePasajero != null) {
-        $objViaje->ingresaModificaPasajero($posiblePasajero);
-        echo "-------------------------------------------\n";
-        echo $objViaje;
-        echo "-------------------------------------------\n";
-    }*/
-    
-    //modificarInfoPasajeros($objViaje);
-    //$colPasajeros = cargarPasajeros($objViaje,$objViaje->etCantidadMaxima());
